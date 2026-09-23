@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <title>FreesApp · 香港免費贈送</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <div id="welcome" class="screen on">
+      <div class="hero">
+        <div class="brand"><div class="logo">F</div> FreesApp</div>
+        <h1>唔好掉。<br/>送俾附近有需要嘅人。</h1>
+        <p class="lead">香港十八區免費贈送平台。物品永遠 $0，App 唔經手任何交易。</p>
+        <div class="pills">
+          <div class="pill">最少 3 張相</div>
+          <div class="pill">狀況要填</div>
+          <div class="pill">即時傾約交收</div>
+          <div class="pill">雙方確認先鎖定</div>
+          <div class="pill">七日免費試用</div>
+        </div>
+        <div class="price-card">
+          <div>
+            <b>US$1 / 星期</b>
+            <span>試用完先收費 · 目標 10,000 訂閱</span>
+          </div>
+          <div style="text-align:right">
+            <b>7 日</b>
+            <span>免費全功能</span>
+          </div>
+        </div>
+      </div>
+      <div class="cta">
+        <button class="btn btn-primary" onclick="startTrial()">開始 7 日免費</button>
+        <p class="fine">試用期間可瀏覽、發布、傾假。物品不可標價。</p>
+      </div>
+    </div>
+    <div id="home" class="screen">
+      <div class="top">
+        <div class="search">
+          <span>⌕</span>
+          <input id="q" placeholder="搜尋免費物品" oninput="renderFeed()" />
+        </div>
+        <button class="icon-btn" onclick="openSheet('district')">區</button>
+      </div>
+      <div class="filters" id="filterBar"></div>
+      <div class="feed"><div class="grid" id="feed"></div></div>
+      <div class="tabbar">
+        <button class="tab on" onclick="show('home')">發現</button>
+        <button class="tab" onclick="show('post')">送出</button>
+        <button class="tab" onclick="show('chats')">傾假</button>
+        <button class="tab" onclick="show('me')">我</button>
+      </div>
+    </div>
+    <div id="detail" class="screen">
+      <div class="gallery" id="gallery">
+        <button class="back" style="position:absolute;left:12px;top:12px" onclick="show('home')">←</button>
+        <div class="dots" id="dots"></div>
+      </div>
+      <div class="sheet" id="detailSheet"></div>
+      <div class="sticky-cta" id="detailCta"></div>
+    </div>
+    <div id="post" class="screen">
+      <div class="top"><b>送出一件免費物品</b><button class="chip" onclick="show('home')">取消</button></div>
+      <div class="form">
+        <label>相片（最少 3 張）</label>
+        <div class="photos" id="photoSlots"></div>
+        <p class="sub" style="margin-top:6px">建議：封面、整體、瑕疵特寫。示範可撞格仔加入樣板相。</p>
+        <label>標題</label>
+        <input class="field" id="pTitle" maxlength="40" placeholder="例如：實木餐椅兩張" />
+        <label>描述</label>
+        <textarea class="field" id="pDesc" placeholder="點解送、尺寸、幾時方便交收"></textarea>
+        <label>狀況</label>
+        <div class="opts" id="condOpts"></div>
+        <label>類別</label>
+        <div class="opts" id="catOpts"></div>
+        <label>交收地區</label>
+        <button class="field" style="text-align:left" id="pDistrictBtn" onclick="openSheet('postDistrict')">選擇十八區</button>
+        <label>交收方法</label>
+        <div class="opts" id="meetOpts"></div>
+        <label style="display:flex;gap:8px;align-items:flex-start;font-weight:500">
+          <input type="checkbox" id="pFree" checked />
+          我確認呢件嘢完全免費，唔會收錢、定金或運費。
+        </label>
+        <p class="err" id="pErr"></p>
+        <button class="btn btn-primary" style="margin-top:12px" onclick="submitPost()">發布</button>
+      </div>
+    </div>
+    <div id="chats" class="screen">
+      <div class="top"><b>即時傾假</b></div>
+      <div class="list" id="chatList"></div>
+      <div class="tabbar">
+        <button class="tab" onclick="show('home')">發現</button>
+        <button class="tab" onclick="show('post')">送出</button>
+        <button class="tab on" onclick="show('chats')">傾假</button>
+        <button class="tab" onclick="show('me')">我</button>
+      </div>
+    </div>
+    <div id="chat" class="screen">
+      <div class="top">
+        <button class="back" onclick="show('chats')">←</button>
+        <div>
+          <b id="chatTitle">傾假</b>
+          <div class="sub" id="chatSub">約交收 · 唔好談錢</div>
+        </div>
+        <span></span>
+      </div>
+      <div class="thread" id="thread"></div>
+      <div class="deal-bar" id="dealBar"></div>
+      <div class="composer">
+        <input id="msg" placeholder="講交收時間同地點…" onkeydown="if(event.key==='Enter')sendMsg()" />
+        <button class="send" onclick="sendMsg()">送</button>
+      </div>
+    </div>
+    <div id="me" class="screen">
+      <div class="top"><b>我的 FreesApp</b></div>
+      <div class="profile">
+        <div class="banner">
+          <div class="sub" style="color:#cfe8d8">香港區 MVP · 訂閱</div>
+          <div style="font-size:22px;font-weight:800;margin:4px 0">7 日免費進行中</div>
+          <div id="trialLeft" style="opacity:.85">試用剩餘日數會喺呢度更新</div>
+          <div style="margin-top:10px;font-size:13px">之後 US$1 / 星期，可隨時取消。物品永遠免費。</div>
+        </div>
+        <div class="stat">
+          <div><b id="stGive">1</b><span>已送出</span></div>
+          <div><b id="stGet">0</b><span>已執走</span></div>
+          <div><b>沙田</b><span>預設地區</span></div>
+        </div>
+        <div class="row" style="margin:0">
+          <div class="ava">R<span class="ava-count" id="meGiveBadge">0</span></div>
+          <div>
+            <b>Redbull</b>
+            <div class="sub">用戶 icon 數字 = 累計成功送出（已完成交收）</div>
+          </div>
+        </div>
+        <div id="myListings"></div>
+      </div>
+      <div class="tabbar">
+        <button class="tab" onclick="show('home')">發現</button>
+        <button class="tab" onclick="show('post')">送出</button>
+        <button class="tab" onclick="show('chats')">傾假</button>
+        <button class="tab on" onclick="show('me')">我</button>
+      </div>
+    </div>
+    <div class="sheet-modal" id="modal" onclick="if(event.target.id==='modal')closeSheet()">
+      <div class="sheet-body" id="modalBody"></div>
+    </div>
+    <div class="toast" id="toast"></div>
+  </div>
+<script src="app.js"></script>
+</body>
+</html>
