@@ -20,7 +20,7 @@
           <span style="background-image:url('https://images.unsplash.com/photo-1503602642458-232111445657?w=800&q=80')"></span>
         </div>
         <h1>唔好掉。<br/>送俾附近有需要嘅人。</h1>
-        <p class="lead">香港十八區免費贈送平台。物品永遠 $0，App 唔經手任何交易。</p>
+        <p class="lead">十八區免費贈送。物品永遠 $0。</p>
         <div class="pills">
           <div class="pill">最少 3 張相</div>
           <div class="pill">狀況要填</div>
@@ -35,7 +35,7 @@
       </div>
       <div class="cta">
         <button class="btn btn-primary" onclick="startTrial()">開始 7 日免費</button>
-        <p class="fine">試用期間可瀏覽、發布、傾假。物品不可標價。</p>
+        <p class="fine">試用期間可瀏覽、發布、對話。物品不可標價。</p>
       </div>
     </div>
     <div id="home" class="screen">
@@ -54,8 +54,8 @@
         <button class="tab on" onclick="show('home')"><span class="ic">⌂</span>發現</button>
         <button class="tab" onclick="show('activity')"><span class="ic">◎</span>動態</button>
         <button class="sell-fab" onclick="show('post')" aria-label="送出">＋</button>
-        <button class="tab" onclick="show('chats')"><span class="ic">💬</span>傾假</button>
-        <button class="tab" onclick="show('me')"><span class="ic">○</span>我</button>
+        <button class="tab" onclick="show('chats')"><span class="ic">💬</span>對話</button>
+        <button class="tab" onclick="show('me')"><span class="ic">○</span>個人</button>
       </div>
     </div>
     <div id="activity" class="screen">
@@ -68,8 +68,8 @@
         <button class="tab" onclick="show('home')"><span class="ic">⌂</span>發現</button>
         <button class="tab on" onclick="show('activity')"><span class="ic">◎</span>動態</button>
         <button class="sell-fab" onclick="show('post')">＋</button>
-        <button class="tab" onclick="show('chats')"><span class="ic">💬</span>傾假</button>
-        <button class="tab" onclick="show('me')"><span class="ic">○</span>我</button>
+        <button class="tab" onclick="show('chats')"><span class="ic">💬</span>對話</button>
+        <button class="tab" onclick="show('me')"><span class="ic">○</span>個人</button>
       </div>
     </div>
     <div id="detail" class="screen">
@@ -98,24 +98,24 @@
       </div>
     </div>
     <div id="chats" class="screen">
-      <div class="top"><b>即時傾假</b></div>
+      <div class="top"><b>對話</b></div>
       <div class="list" id="chatList"></div>
       <div class="tabbar">
         <button class="tab" onclick="show('home')"><span class="ic">⌂</span>發現</button>
         <button class="tab" onclick="show('activity')"><span class="ic">◎</span>動態</button>
         <button class="sell-fab" onclick="show('post')">＋</button>
-        <button class="tab on" onclick="show('chats')"><span class="ic">💬</span>傾假</button>
-        <button class="tab" onclick="show('me')"><span class="ic">○</span>我</button>
+        <button class="tab on" onclick="show('chats')"><span class="ic">💬</span>對話</button>
+        <button class="tab" onclick="show('me')"><span class="ic">○</span>個人</button>
       </div>
     </div>
     <div id="chat" class="screen">
-      <div class="top"><button class="back" onclick="show('chats')">←</button><div><b id="chatTitle">傾假</b><div class="sub" id="chatSub">約交收</div></div><span></span></div>
+      <div class="top"><button class="back" onclick="show('chats')">←</button><div><b id="chatTitle">對話</b><div class="sub" id="chatSub">約交收</div></div><span></span></div>
       <div class="thread" id="thread"></div>
       <div class="deal-bar" id="dealBar"></div>
       <div class="composer"><input id="msg" placeholder="講交收時間同地點…" onkeydown="if(event.key==='Enter')sendMsg()" /><button class="send" onclick="sendMsg()">送</button></div>
     </div>
     <div id="me" class="screen">
-      <div class="top"><b>我的 FreesApp</b></div>
+      <div class="top"><b>個人</b></div>
       <div class="profile">
         <div class="banner"><div class="sub" style="color:#cfe8d8">香港區 MVP</div><div style="font-size:22px;font-weight:800;margin:4px 0">7 日免費進行中</div><div id="trialLeft"></div></div>
         <div class="stat"><div><b id="stGive">1</b><span>已送出</span></div><div><b id="stGet">0</b><span>已執走</span></div><div><b>離島</b><span>預設地區</span></div></div>
@@ -129,8 +129,8 @@
         <button class="tab" onclick="show('home')"><span class="ic">⌂</span>發現</button>
         <button class="tab" onclick="show('activity')"><span class="ic">◎</span>動態</button>
         <button class="sell-fab" onclick="show('post')">＋</button>
-        <button class="tab" onclick="show('chats')"><span class="ic">💬</span>傾假</button>
-        <button class="tab on" onclick="show('me')"><span class="ic">○</span>我</button>
+        <button class="tab" onclick="show('chats')"><span class="ic">💬</span>對話</button>
+        <button class="tab on" onclick="show('me')"><span class="ic">○</span>個人</button>
       </div>
     </div>
     <div class="sheet-modal" id="modal" onclick="if(event.target.id==='modal')closeSheet()"><div class="sheet-body" id="modalBody"></div></div>
