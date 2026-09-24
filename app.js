@@ -5,13 +5,23 @@ const P=["https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80",
 const ST={open:"待認領",locked:"鎖定待交收",done:"已完成交收"};
 let items=[{id:1,title:"實木餐椅兩張",cond:"8成新",dist:"沙田區",user:"阿琳",desc:"沙田圍站交收。",photos:P,status:"open"},{id:7,title:"IKEA 層架",cond:"8成新",dist:"離島區",user:"你",desc:"東涌交收。",photos:P,status:"open"}];
 let cur=null, picked="全部";
-const ICO={home:'<span class="i3 i3-home"></span>',pulse:'<span class="i3 i3-pulse"></span>',chat:'<span class="i3 i3-chat"></span>',me:'<span class="i3 i3-me"></span>',plus:'<span class="i3 i3-plus"></span>',heart:'<span class="i3 i3-heart"></span>'};
+function clay(id,fill,d){
+  return '<svg class="clay" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="'+id+'" x1="6" y1="2" x2="26" y2="30"><stop offset="0" stop-color="'+fill[0]+'"/><stop offset="1" stop-color="'+fill[1]+'"/></linearGradient></defs><path fill="url(#'+id+')" d="'+d+'"/></svg>';
+}
+const ICO={
+  home: clay('gH',['#86e0ab','#1a6b43'],'M6 14.2L16 6l10 8.2V26a2 2 0 0 1-2 2H19v-8h-6v8H8a2 2 0 0 1-2-2z'),
+  pulse: clay('gP',['#8fe3c0','#1f7a52'],'M4 16h4l3-8 4 16 3-8h10v3H20l-3 8-4-16-3 8H4z'),
+  chat: clay('gC',['#9be4c4','#1a6b43'],'M6 7.5A5.5 5.5 0 0 1 11.5 2h9A5.5 5.5 0 0 1 26 7.5v8A5.5 5.5 0 0 1 20.5 21H13l-7 5V7.5z'),
+  me: clay('gM',['#b7ebcf','#1f6b45'],'M16 4.5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zM7.5 27c1.6-5 4.3-7.5 8.5-7.5s6.9 2.5 8.5 7.5z'),
+  plus: clay('gX',['#fff8ee','#f0e2cc'],'M14 7h4v18h-4zM7 14h18v4H7z'),
+  heart: clay('gR',['#ff9aa0','#c4454a'],'M16 27S6 20.2 6 13.2A5.4 5.4 0 0 1 16 10a5.4 5.4 0 0 1 10 3.2C26 20.2 16 27 16 27z')
+};
 function paintIcons(){
   document.querySelectorAll(".tab").forEach(t=>{
-    const n=(t.dataset.tab||t.textContent).replace(/\s+/g,"").trim();
-    t.dataset.tab=n;
+    const n=t.getAttribute("data-tab")||t.textContent.replace(/\s+/g,"").trim();
+    t.setAttribute("data-tab",n);
     const map={"發現":ICO.home,"動態":ICO.pulse,"對話":ICO.chat,"個人":ICO.me};
-    if(map[n]) t.innerHTML=map[n]+n;
+    if(map[n]) t.innerHTML=map[n]+'<span>'+n+'</span>';
   });
   document.querySelectorAll(".sell-fab").forEach(b=>{b.innerHTML=ICO.plus;});
   const fav=document.querySelector(".ghost-ico"); if(fav) fav.innerHTML=ICO.heart;
