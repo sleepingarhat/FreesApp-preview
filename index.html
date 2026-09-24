@@ -8,13 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="carousell.css" />
-  <link rel="stylesheet" href="i3.css" />
-  <link rel="stylesheet" href="i3-home.css" />
-  <link rel="stylesheet" href="i3-pulse.css" />
-  <link rel="stylesheet" href="i3-plus.css" />
-  <link rel="stylesheet" href="i3-chat.css" />
-  <link rel="stylesheet" href="i3-me.css" />
-  <link rel="stylesheet" href="i3-heart.css" />
+  <link rel="stylesheet" href="i3.css?v=10" />
 </head>
 <body>
   <div id="app">
@@ -53,35 +47,31 @@
       <div class="top" style="padding-top:8px">
         <div class="search"><span>⌕</span><input id="q" placeholder="搜尋免費物品、區、類別" /></div>
       </div>
-      <div class="cat-row" id="catRow"></div>
       <div class="seg"><button class="on">附近</button><button>熱門</button><button>關注</button></div>
       <div class="filters" id="filterBar"></div>
       <div class="feed"><div class="grid" id="feed"></div></div>
       <div class="tabbar">
-        <button class="tab on" onclick="show('home')">發現</button>
-        <button class="tab" onclick="show('activity')">動態</button>
-        <button class="sell-fab" onclick="show('post')" aria-label="送出"></button>
-        <button class="tab" onclick="show('chats')">對話</button>
-        <button class="tab" onclick="show('me')">個人</button>
+        <button class="tab on" data-tab="發現" onclick="show('home')">發現</button>
+        <button class="tab" data-tab="動態" onclick="show('activity')">動態</button>
+        <button class="sell-fab" onclick="show('post')" aria-label="送出">+</button>
+        <button class="tab" data-tab="對話" onclick="show('chats')">對話</button>
+        <button class="tab" data-tab="個人" onclick="show('me')">個人</button>
       </div>
     </div>
     <div id="activity" class="screen">
       <div class="top"><b>動態</b></div>
-      <div class="list">
-        <div class="row"><div class="ava">♡</div><div><b>阿琳 收藏咗你嘅層架</b><div class="sub">2 小時前</div></div></div>
-      </div>
+      <div class="list"><div class="row"><div class="ava">♡</div><div><b>阿琳 收藏咗你嘅層架</b><div class="sub">2 小時前</div></div></div></div>
       <div class="tabbar">
-        <button class="tab" onclick="show('home')">發現</button>
-        <button class="tab on" onclick="show('activity')">動態</button>
-        <button class="sell-fab" onclick="show('post')"></button>
-        <button class="tab" onclick="show('chats')">對話</button>
-        <button class="tab" onclick="show('me')">個人</button>
+        <button class="tab" data-tab="發現" onclick="show('home')">發現</button>
+        <button class="tab on" data-tab="動態" onclick="show('activity')">動態</button>
+        <button class="sell-fab" onclick="show('post')">+</button>
+        <button class="tab" data-tab="對話" onclick="show('chats')">對話</button>
+        <button class="tab" data-tab="個人" onclick="show('me')">個人</button>
       </div>
     </div>
     <div id="detail" class="screen">
       <div class="gallery" id="gallery">
         <button class="back" style="position:absolute;left:12px;top:12px" onclick="show('home')">←</button>
-        <div class="dots" id="dots"></div>
       </div>
       <div class="sheet" id="detailSheet"></div>
       <div class="sticky-cta" id="detailCta"></div>
@@ -89,8 +79,6 @@
     <div id="post" class="screen">
       <div class="top"><b>送出一件免費物品</b><button class="chip" onclick="show('home')">取消</button></div>
       <div class="form">
-        <label>相片（最少 3 張）</label>
-        <div class="photos" id="photoSlots"></div>
         <label>標題</label><input class="field" id="pTitle" maxlength="40" placeholder="例如：實木餐椅兩張" />
         <p class="err" id="pErr"></p>
         <button class="btn btn-primary" style="margin-top:12px" onclick="submitPost()">發布</button>
@@ -100,15 +88,15 @@
       <div class="top"><b>對話</b></div>
       <div class="list" id="chatList"></div>
       <div class="tabbar">
-        <button class="tab" onclick="show('home')">發現</button>
-        <button class="tab" onclick="show('activity')">動態</button>
-        <button class="sell-fab" onclick="show('post')"></button>
-        <button class="tab on" onclick="show('chats')">對話</button>
-        <button class="tab" onclick="show('me')">個人</button>
+        <button class="tab" data-tab="發現" onclick="show('home')">發現</button>
+        <button class="tab" data-tab="動態" onclick="show('activity')">動態</button>
+        <button class="sell-fab" onclick="show('post')">+</button>
+        <button class="tab on" data-tab="對話" onclick="show('chats')">對話</button>
+        <button class="tab" data-tab="個人" onclick="show('me')">個人</button>
       </div>
     </div>
     <div id="chat" class="screen">
-      <div class="top"><button class="back" onclick="show('chats')">←</button><div><b id="chatTitle">對話</b><div class="sub" id="chatSub">約交收</div></div><span></span></div>
+      <div class="top"><button class="back" onclick="show('chats')">←</button><div><b>對話</b><div class="sub">約交收</div></div><span></span></div>
       <div class="thread" id="thread"></div>
       <div class="composer"><input id="msg" placeholder="講交收時間同地點…" /><button class="send" onclick="sendMsg()">送</button></div>
     </div>
@@ -118,19 +106,18 @@
         <div class="banner"><div class="sub" style="color:#cfe8d8">香港區 MVP</div><div style="font-size:22px;font-weight:800;margin:4px 0">7 日免費進行中</div><div id="trialLeft"></div></div>
         <div class="stat"><div><b id="stGive">1</b><span>已送出</span></div><div><b id="stGet">0</b><span>已執走</span></div><div><b>離島</b><span>預設地區</span></div></div>
         <div class="row" style="margin:0"><div class="ava">R<span class="ava-count" id="meGiveBadge">0</span></div><div><b>Redbull</b><div class="sub">icon 數字 = 累計送出</div></div></div>
-        <button class="me-link" onclick="toast('稍後')">我刊登的物品<span>›</span></button>
       </div>
       <div class="tabbar">
-        <button class="tab" onclick="show('home')">發現</button>
-        <button class="tab" onclick="show('activity')">動態</button>
-        <button class="sell-fab" onclick="show('post')"></button>
-        <button class="tab" onclick="show('chats')">對話</button>
-        <button class="tab on" onclick="show('me')">個人</button>
+        <button class="tab" data-tab="發現" onclick="show('home')">發現</button>
+        <button class="tab" data-tab="動態" onclick="show('activity')">動態</button>
+        <button class="sell-fab" onclick="show('post')">+</button>
+        <button class="tab" data-tab="對話" onclick="show('chats')">對話</button>
+        <button class="tab on" data-tab="個人" onclick="show('me')">個人</button>
       </div>
     </div>
     <div class="sheet-modal" id="modal" onclick="if(event.target.id==='modal')closeSheet()"><div class="sheet-body" id="modalBody"></div></div>
     <div class="toast" id="toast"></div>
   </div>
-<script src="app.js"></script>
+<script src="app.js?v=10"></script>
 </body>
 </html>
