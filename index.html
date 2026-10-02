@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
   <title>FreesApp</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
-  <link rel="stylesheet" href="styles.css?v=22" />
-  <link rel="stylesheet" href="carousell.css?v=22" />
-  <link rel="stylesheet" href="i3.css?v=22" />
+  <link rel="stylesheet" href="styles.css?v=23" />
+  <link rel="stylesheet" href="carousell.css?v=23" />
+  <link rel="stylesheet" href="i3.css?v=23" />
 </head>
 <body>
   <div id="app">
@@ -16,24 +16,8 @@
         <div class="brand"><div class="logo">F</div> FreesApp</div>
         <h1>註冊帳號，完全免費。<br/>送出同認領，先要付費。</h1>
         <p class="lead">全港十八區送出嘅免費物品可以直接睇。要發佈，或者要認領，訂閱費用唔使 $10 HKD／星期！成功認領一件就回本啦！用得唔好&#x5605;；免費唔使買！</p>
-        <div class="steps">
-          <div class="step"><b>1</b><div>睇附近免費待領物品<div class="sub">所在地區、物品相片、物品狀況、物品距離，唔使付費</div></div></div>
-          <div class="step"><b>2</b><div>發佈免費物品要付費<div class="sub">最少 3 張物品狀況相、所處地區／領取位置</div></div></div>
-          <div class="step"><b>3</b><div>認領物品要付費<div class="sub">雙方確認先鎖定；發佈者可因應情況取消</div></div></div>
-        </div>
       </div>
-      <div class="cta">
-        <button class="btn btn-primary" onclick="show('home')">先睇附近免費物品</button>
-        <button class="btn btn-ghost" onclick="show('pay')">發佈／認領稍後先收費</button>
-      </div>
-    </div>
-    <div id="pay" class="screen">
-      <div class="hero">
-        <div class="brand"><div class="logo">F</div> 稍後先接</div>
-        <h1 id="payTitle">帳號同付款<br/>最尾先做。</h1>
-        <p class="lead" id="payLead">而家可以發佈、認領、對話同確認交收。真正收費未接。</p>
-      </div>
-      <div class="cta"><button class="btn btn-primary" onclick="show('home')">返去睇物品</button></div>
+      <div class="cta"><button class="btn btn-primary" onclick="show('home')">先睇附近免費物品</button></div>
     </div>
     <div id="home" class="screen">
       <div class="loc-bar"><button class="loc" onclick="openSheet('filter')">離島區 ▾<small>東涌 · 附近免費物品</small></button><button class="ghost-ico" onclick="locateMe(false)"></button></div>
@@ -48,14 +32,16 @@
     <div id="post" class="screen"><div class="top"><b>三下送出</b><button class="chip" onclick="show('home')">取消</button></div><div class="form"><label>相片（最少 3 張）</label><div class="photos" id="photoSlots"></div><button class="chip" style="margin-top:8px" type="button" onclick="useDemoPhotos()">用示範三張相</button><input id="filePick" type="file" accept="image/*" hidden /><label>標題</label><input class="field" id="pTitle" maxlength="40" placeholder="例如：人形公仔" /><label>描述</label><textarea class="field" id="pDesc"></textarea><label>狀況</label><div class="opts" id="condOpts"></div><label>類別</label><div class="opts" id="catOpts"></div><label>交收地區</label><button class="field" type="button" style="text-align:left" id="pDistrictBtn" onclick="openSheet('post')">選擇十八區</button><label>交收方法</label><div class="opts" id="meetOpts"></div><label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="pFree" checked /> 我確認完全免費，不收錢</label><p class="err" id="pErr"></p><button class="btn btn-primary" style="margin-top:12px" onclick="submitPost()">發佈</button></div></div>
     <div id="chats" class="screen"><div class="top"><b>對話</b></div><div class="list" id="chatList"></div><div class="tabbar"><button class="tab" data-tab="發現" onclick="show('home')">發現</button><button class="tab" data-tab="動態" onclick="show('activity')">動態</button><button class="sell-fab" onclick="goPost()">+</button><button class="tab on" data-tab="對話" onclick="show('chats')">對話</button><button class="tab" data-tab="個人" onclick="show('me')">個人</button></div></div>
     <div id="chat" class="screen"><div class="top"><button class="back" onclick="show('chats')">←</button><div><b>對話</b><div class="sub">約交收</div></div></div><div class="thread" id="thread"></div><div class="composer"><input id="msg" placeholder="講交收時間同地點" /><button class="send" onclick="sendMsg()">送</button></div></div>
-    <div id="me" class="screen"><div class="top"><b>個人</b></div><div class="profile"><div class="banner"><div class="sub">送出／認領越多，icon 越特別</div><div style="font-size:22px;font-weight:800;margin:4px 0" id="trialLeft">新人</div></div><div class="stat"><div><b id="stGive">0</b><span>已送出</span></div><div><b id="stGet">0</b><span>已執走</span></div><div><b>離島</b><span>預設地區</span></div></div><button class="me-link" onclick="toggleAlert()">附近新帖提醒<span id="alertState">開</span></button><div class="row" style="margin:8px 0"><div class="ava" id="meAva">R<span class="ava-count" id="meGiveBadge">0</span></div><div><b>Redbull</b><div class="sub">0 新人 · 1 銅 · 3 銀 · 6 金閃 · 10 特別</div></div></div><div id="myListings"></div></div><div class="tabbar"><button class="tab" data-tab="發現" onclick="show('home')">發現</button><button class="tab" data-tab="動態" onclick="show('activity')">動態</button><button class="sell-fab" onclick="goPost()">+</button><button class="tab" data-tab="對話" onclick="show('chats')">對話</button><button class="tab on" data-tab="個人" onclick="show('me')">個人</button></div></div>
+    <div id="me" class="screen"><div class="top"><b>個人</b></div><div class="profile"><div class="banner"><div class="sub">一個帳號，送同領分開計</div><div style="font-size:22px;font-weight:800;margin:4px 0" id="trialLeft">誠信度 100%</div></div><div class="stat"><div><b id="stGive">0</b><span>已送出</span></div><div><b id="stGet">0</b><span>已執走</span></div><div><b>100%</b><span>誠信度</span></div></div><button class="me-link" onclick="toggleAlert()">附近新帖提醒<span id="alertState">開</span></button><div id="myListings"></div></div><div class="tabbar"><button class="tab" data-tab="發現" onclick="show('home')">發現</button><button class="tab" data-tab="動態" onclick="show('activity')">動態</button><button class="sell-fab" onclick="goPost()">+</button><button class="tab" data-tab="對話" onclick="show('chats')">對話</button><button class="tab on" data-tab="個人" onclick="show('me')">個人</button></div></div>
+    <div id="pay" class="screen"><div class="hero"><h1>帳號同付款最尾先做</h1></div><div class="cta"><button class="btn btn-primary" onclick="show('home')">返去</button></div></div>
     <div class="sheet-modal" id="modal" onclick="if(event.target.id==='modal')closeSheet()"><div class="sheet-body" id="modalBody"></div></div>
     <div class="toast" id="toast"></div>
   </div>
-<style>.mapbox{position:relative;height:280px;margin:8px 16px 4px;border-radius:18px;overflow:hidden;background:#e8e8ed}.loc-bar{display:flex;align-items:center;justify-content:space-between;padding:calc(10px + var(--safe-t)) 20px 0}.loc{border:0;background:none;font:inherit;font-weight:700;font-size:22px;text-align:left}.loc small{display:block;font-size:12px;color:var(--muted);font-weight:500}.ghost-ico{width:44px;height:44px;background:#fff;border-radius:22px;border:1px solid var(--line)}.sell-fab{width:56px;height:56px;margin-top:-18px;flex:0 0 56px;border:0;border-radius:20px;background:var(--green);color:#fff}.hero h1{font-size:28px}.steps{display:grid;gap:8px}.step{display:flex;gap:10px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px}.step b{width:28px;height:28px;border-radius:8px;background:var(--green);color:#fff;display:grid;place-items:center}</style>
+<style>.mapbox{position:relative;height:280px;margin:8px 16px 4px;border-radius:18px;overflow:hidden;background:#e8e8ed}.loc-bar{display:flex;align-items:center;justify-content:space-between;padding:calc(10px + var(--safe-t)) 20px 0}.loc{border:0;background:none;font:inherit;font-weight:700;font-size:22px;text-align:left}.loc small{display:block;font-size:12px;color:var(--muted);font-weight:500}.ghost-ico{width:44px;height:44px;background:#fff;border-radius:22px;border:1px solid var(--line)}.sell-fab{width:56px;height:56px;margin-top:-18px;flex:0 0 56px;border:0;border-radius:20px;background:var(--green);color:#fff}.hero h1{font-size:28px}</style>
 <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
-<script src="app.js?v=22"></script>
-<script src="map.js?v=22"></script>
-<script src="flow.js?v=22"></script>
+<script src="app.js?v=23"></script>
+<script src="map.js?v=23"></script>
+<script src="flow.js?v=23"></script>
+<script src="ranks.js?v=23"></script>
 </body>
 </html>
