@@ -5,17 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
   <title>FreesApp</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
-  <link rel="stylesheet" href="styles.css?v=27" />
-  <link rel="stylesheet" href="layout.css?v=27" />
+  <link rel="stylesheet" href="styles.css?v=28" />
+  <link rel="stylesheet" href="layout.css?v=28" />
 </head>
 <body>
   <div id="app">
     <div id="welcome" class="screen on">
-      <div class="hero">
-        <div class="brand"><div class="logo">F</div> FreesApp</div>
-        <h1>註冊帳號，完全免費。<br/>送出同認領，先要付費。</h1>
-        <p class="lead">全港十八區送出嘅免費物品可以直接睇。排骨仔退散。用得唔好&#x5605;；免費唔使買！</p>
-      </div>
+      <div class="hero"></div>
       <div class="cta"><button class="btn btn-primary" onclick="show('home')">先睇附近免費物品</button></div>
     </div>
     <div id="home" class="screen">
@@ -31,18 +27,19 @@
     <div id="post" class="screen"><div class="top"><b>執屋送嘢</b><button class="chip" onclick="show('home')">取消</button></div><div class="form"><label>相片（最少 3 張）</label><div class="photos" id="photoSlots"></div><button class="chip" style="margin-top:8px" type="button" onclick="useDemoPhotos()">用示範三張相</button><input id="filePick" type="file" accept="image/*" hidden /><label>標題</label><input class="field" id="pTitle" maxlength="40" placeholder="例如：人形公仔" /><label>描述</label><textarea class="field" id="pDesc"></textarea><label>狀況</label><div class="opts" id="condOpts"></div><label>類別</label><div class="opts" id="catOpts"></div><label>交收地區</label><button class="field" type="button" style="text-align:left" id="pDistrictBtn" onclick="openSheet('post')">選擇十八區</button><label>交收方法</label><div class="opts" id="meetOpts"></div><label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="pFree" checked /> 我確認完全免費，不收錢</label><p class="err" id="pErr"></p><button class="btn btn-primary" style="margin-top:12px" onclick="submitPost()">發佈</button></div></div>
     <div id="chats" class="screen"><div class="top"><b>對話</b></div><div class="list" id="chatList"></div><div class="tabbar"><button class="tab" data-tab="發現" onclick="show('home')">發現</button><button class="tab" data-tab="動態" onclick="show('activity')">動態</button><button class="sell-fab" onclick="goPost()">+</button><button class="tab on" data-tab="對話" onclick="show('chats')">對話</button><button class="tab" data-tab="個人" onclick="show('me')">個人</button></div></div>
     <div id="chat" class="screen"><div class="top"><button class="back" onclick="show('chats')">←</button><div><b>對話</b><div class="sub">約交收</div></div></div><div class="thread" id="thread"></div><div class="composer"><input id="msg" placeholder="講交收時間同地點" /><button class="send" onclick="sendMsg()">送</button></div></div>
-    <div id="me" class="screen"><div class="top"><b>個人</b></div><div class="profile"><div class="banner"><div class="sub">一個帳號，送同領分開計</div><div style="font-size:22px;font-weight:800;margin:4px 0" id="trialLeft">誠信度 100%</div></div><div class="stat"><div><b id="stGive">0</b><span>已送出</span></div><div><b id="stGet">0</b><span>已執走</span></div><div><b>100%</b><span>誠信度</span></div></div><button class="me-link" onclick="toggleAlert()">附近新帖提醒<span id="alertState">開</span></button><div id="myListings"></div></div><div class="tabbar"><button class="tab" data-tab="發現" onclick="show('home')">發現</button><button class="tab" data-tab="動態" onclick="show('activity')">動態</button><button class="sell-fab" onclick="goPost()">+</button><button class="tab" data-tab="對話" onclick="show('chats')">對話</button><button class="tab on" data-tab="個人" onclick="show('me')">個人</button></div></div>
+    <div id="me" class="screen"><div class="top"><b>個人</b></div><div class="profile"><div class="banner"><div class="sub">一個帳號，送同領分開計</div><div style="font-size:22px;font-weight:800;margin:4px 0" id="trialLeft">誠信度 100%</div></div><div class="stat"><div><b id="stGive">0</b><span>已送出</span></div><div><b id="stGet">0</b><span>已執走</span></div><div><b>100%</b><span>誠信度</span></div></div><button class="me-link" onclick="toggleAlert()">附近新帖提醒<span id="alertState">開</span></button><button class="me-link" onclick="rankGuide()">評分點解<span>送／領／誠信</span></button><div id="myListings"></div></div><div class="tabbar"><button class="tab" data-tab="發現" onclick="show('home')">發現</button><button class="tab" data-tab="動態" onclick="show('activity')">動態</button><button class="sell-fab" onclick="goPost()">+</button><button class="tab" data-tab="對話" onclick="show('chats')">對話</button><button class="tab on" data-tab="個人" onclick="show('me')">個人</button></div></div>
     <div id="pay" class="screen"><div class="hero"><h1>帳號同付款最尾先做</h1></div><div class="cta"><button class="btn btn-primary" onclick="show('home')">返去</button></div></div>
     <div class="sheet-modal" id="modal" onclick="if(event.target.id==='modal')closeSheet()"><div class="sheet-body" id="modalBody"></div></div>
     <div class="toast" id="toast"></div>
   </div>
 <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
-<script src="app.js?v=27"></script>
-<script src="map.js?v=27"></script>
-<script src="flow.js?v=27"></script>
-<script src="ranks.js?v=27"></script>
-<script src="ui.js?v=27"></script>
-<script src="ashe.js?v=27"></script>
-<script src="db.js?v=27"></script>
+<script src="app.js?v=28"></script>
+<script src="map.js?v=28"></script>
+<script src="flow.js?v=28"></script>
+<script src="ranks.js?v=28"></script>
+<script src="ui.js?v=28"></script>
+<script src="ashe.js?v=28"></script>
+<script src="db.js?v=28"></script>
+<script src="welcome.js?v=28"></script>
 </body>
 </html>
