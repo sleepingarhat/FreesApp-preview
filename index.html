@@ -4,9 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
   <title>FreesApp</title>
-  <link rel="stylesheet" href="styles.css?v=17" />
-  <link rel="stylesheet" href="carousell.css?v=17" />
-  <link rel="stylesheet" href="i3.css?v=17" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="styles.css?v=18" />
+  <link rel="stylesheet" href="carousell.css?v=18" />
+  <link rel="stylesheet" href="i3.css?v=18" />
 </head>
 <body>
   <div id="app">
@@ -40,7 +41,7 @@
       </div>
     </div>
     <div id="home" class="screen">
-      <div class="loc-bar"><button class="loc" onclick="openSheet('filter')">離島區 ▾<small>東涌 · 附近免費物品</small></button><button class="ghost-ico" onclick="toast('已開收藏')"></button></div>
+      <div class="loc-bar"><button class="loc" onclick="openSheet('filter')">離島區 ▾<small>東涌 · 附近免費物品</small></button><button class="ghost-ico" onclick="locateMe()"></button></div>
       <div class="mapbox" id="mapbox"></div>
       <div class="top" style="padding-top:8px"><div class="search"><span>⌕</span><input id="q" placeholder="搜尋免費物品、區、類別" oninput="feed()" /></div></div>
       <div class="filters" id="filterBar"></div>
@@ -56,7 +57,9 @@
     <div class="sheet-modal" id="modal" onclick="if(event.target.id==='modal')closeSheet()"><div class="sheet-body" id="modalBody"></div></div>
     <div class="toast" id="toast"></div>
   </div>
-<style>.steps{display:grid;gap:8px;margin:8px 0 14px}.step{display:flex;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px}.step b{width:28px;height:28px;border-radius:8px;background:var(--green);color:#fff;display:grid;place-items:center;flex:0 0 28px}.plans{display:grid;gap:8px;margin:12px 0}.plan{text-align:left;border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px 14px;font:inherit;width:100%}.plan.on{border-color:var(--green);background:var(--mint)}.plan b{display:block}.plan span{color:var(--muted);font-size:12px}.mapbox{position:relative;height:180px;margin:8px 20px 4px;border-radius:18px;background:#fff;border:1px solid var(--line);overflow:hidden}.pin{position:absolute;border:0;background:#1d1d1f;color:#fff;border-radius:999px;font-size:10px;font-weight:650;padding:4px 7px;font-family:inherit}.loc-bar{display:flex;align-items:center;justify-content:space-between;padding:calc(10px + var(--safe-t)) 20px 0}.loc{border:0;background:none;font:inherit;font-weight:700;letter-spacing:-.03em;padding:0;text-align:left;font-size:22px}.loc small{display:block;font-weight:500;color:var(--muted);font-size:12px;letter-spacing:0}.ghost-ico{width:44px;height:44px;background:#fff;border-radius:22px;border:1px solid var(--line);display:grid;place-items:center}.sell-fab{width:56px;height:56px;margin-top:-18px;flex:0 0 56px;border:0;border-radius:20px;background:var(--green);color:#fff;display:grid;place-items:center}.hero h1{font-size:28px}</style>
-<script src="app.js?v=17"></script>
+<style>.steps{display:grid;gap:8px;margin:8px 0 14px}.step{display:flex;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px}.step b{width:28px;height:28px;border-radius:8px;background:var(--green);color:#fff;display:grid;place-items:center;flex:0 0 28px}.plans{display:grid;gap:8px;margin:12px 0}.plan{text-align:left;border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px 14px;font:inherit;width:100%}.plan.on{border-color:var(--green);background:var(--mint)}.plan b{display:block}.plan span{color:var(--muted);font-size:12px}.mapbox{position:relative;height:240px;margin:8px 16px 4px;border-radius:18px;background:#e8e8ed;border:1px solid var(--line);overflow:hidden;z-index:1}.leaflet-container{font-family:inherit;height:100%;width:100%;background:#e8e8ed}.loc-bar{display:flex;align-items:center;justify-content:space-between;padding:calc(10px + var(--safe-t)) 20px 0}.loc{border:0;background:none;font:inherit;font-weight:700;letter-spacing:-.03em;padding:0;text-align:left;font-size:22px}.loc small{display:block;font-weight:500;color:var(--muted);font-size:12px;letter-spacing:0}.ghost-ico{width:44px;height:44px;background:#fff;border-radius:22px;border:1px solid var(--line);display:grid;place-items:center}.sell-fab{width:56px;height:56px;margin-top:-18px;flex:0 0 56px;border:0;border-radius:20px;background:var(--green);color:#fff;display:grid;place-items:center}.hero h1{font-size:28px}</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="app.js?v=18"></script>
+<script src="map.js?v=18"></script>
 </body>
 </html>
