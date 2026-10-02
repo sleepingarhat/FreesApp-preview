@@ -32,11 +32,14 @@ function locateMe(silent){
  if(!navigator.geolocation){if(!silent) toast("呢部機尋唔到位置"); return;}
  navigator.geolocation.getCurrentPosition(pos=>{
   const ll=[pos.coords.longitude,pos.coords.latitude];
+  here={lat:pos.coords.latitude,lng:pos.coords.longitude};
+  if(window.applyKm) applyKm();
   if(!fmap){mapPins(); return;}
   if(meDot) meDot.remove();
   const el=document.createElement("div"); el.className="me-dot";
   meDot=new maplibregl.Marker({element:el}).setLngLat(ll).addTo(fmap);
   fmap.flyTo({center:ll,zoom:14});
+  if(document.getElementById("home").classList.contains("on")) feed();
   if(!silent) toast("已對位置");
  },()=>{if(!silent) toast("未批准位置，仍對住東涌");},{enableHighAccuracy:true,timeout:8000});
 }
