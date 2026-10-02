@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
-  <title>FreesApp · 香港免費贈送</title>
-  <link rel="stylesheet" href="styles.css?v=16" />
-  <link rel="stylesheet" href="carousell.css?v=16" />
-  <link rel="stylesheet" href="i3.css?v=16" />
+  <title>FreesApp</title>
+  <link rel="stylesheet" href="styles.css?v=17" />
+  <link rel="stylesheet" href="carousell.css?v=17" />
+  <link rel="stylesheet" href="i3.css?v=17" />
 </head>
 <body>
   <div id="app">
@@ -14,7 +14,7 @@
       <div class="hero">
         <div class="brand"><div class="logo">F</div> FreesApp</div>
         <h1>註冊帳號，完全免費。<br/>送出同認領，先要付費。</h1>
-        <p class="lead">全港十八區送出嘅免費物品可以直接睇。要發佈，或者要認領，訂閱費用唔使 $10 HKD／星期！成功認領一件就回本啦！用得唔好嗡；免費唔使買！</p>
+        <p class="lead">全港十八區送出嘅免費物品可以直接睇。要發佈，或者要認領，訂閱費用唔使 $10 HKD／星期！成功認領一件就回本啦！用得唔好&#x5605;；免費唔使買！</p>
         <div class="steps">
           <div class="step"><b>1</b><div>睇附近免費待領物品<div class="sub">所在地區、物品相片、物品狀況、物品距離，唔使付費</div></div></div>
           <div class="step"><b>2</b><div>發佈免費物品要付費<div class="sub">最少 3 張物品狀況相、所處地區／領取位置</div></div></div>
@@ -30,7 +30,7 @@
       <div class="hero">
         <div class="brand"><div class="logo">F</div> 註冊免費</div>
         <h1 id="payTitle">送出同認領，<br/>先要付費。</h1>
-        <p class="lead" id="payLead">睇牆不收費。發佈同認領 US$1／星期，唔使 $10 HKD。成功認領一件就回本。用得唔好嗡；免費唔使買！</p>
+        <p class="lead" id="payLead">睇牆不收費。發佈同認領 US$1／星期，唔使 $10 HKD。成功認領一件就回本。用得唔好&#x5605;；免費唔使買！</p>
         <div class="plans" id="plans"></div>
       </div>
       <div class="cta">
@@ -45,57 +45,18 @@
       <div class="top" style="padding-top:8px"><div class="search"><span>⌕</span><input id="q" placeholder="搜尋免費物品、區、類別" oninput="feed()" /></div></div>
       <div class="filters" id="filterBar"></div>
       <div class="feed"><div class="grid" id="feed"></div></div>
-      <div class="tabbar"><button class="tab on" data-tab="發現" onclick="show('home')">發現</button><button class="tab" data-tab="動態" onclick="show('activity')">動態</button><button class="sell-fab" onclick="goPost()" aria-label="送出">+</button><button class="tab" data-tab="對話" onclick="show('chats')">對話</button><button class="tab" data-tab="個人" onclick="show('me')">個人</button></div>
+      <div class="tabbar"><button class="tab on" data-tab="發現" onclick="show('home')">發現</button><button class="tab" data-tab="動態" onclick="show('activity')">動態</button><button class="sell-fab" onclick="goPost()">+</button><button class="tab" data-tab="對話" onclick="show('chats')">對話</button><button class="tab" data-tab="個人" onclick="show('me')">個人</button></div>
     </div>
-    <div id="activity" class="screen">
-      <div class="top"><b>動態</b></div><div class="list" id="activityList"></div>
-      <div class="tabbar"><button class="tab" data-tab="發現" onclick="show('home')">發現</button><button class="tab on" data-tab="動態" onclick="show('activity')">動態</button><button class="sell-fab" onclick="goPost()">+</button><button class="tab" data-tab="對話" onclick="show('chats')">對話</button><button class="tab" data-tab="個人" onclick="show('me')">個人</button></div>
-    </div>
+    <div id="activity" class="screen"><div class="top"><b>動態</b></div><div class="list" id="activityList"></div><div class="tabbar"><button class="tab" data-tab="發現" onclick="show('home')">發現</button><button class="tab on" data-tab="動態" onclick="show('activity')">動態</button><button class="sell-fab" onclick="goPost()">+</button><button class="tab" data-tab="對話" onclick="show('chats')">對話</button><button class="tab" data-tab="個人" onclick="show('me')">個人</button></div></div>
     <div id="detail" class="screen"><div class="gallery" id="gallery"><button class="back" style="position:absolute;left:12px;top:12px" onclick="show('home')">←</button></div><div class="sheet" id="detailSheet"></div><div class="sticky-cta" id="detailCta"></div></div>
-    <div id="post" class="screen">
-      <div class="top"><b>三下送出</b><button class="chip" onclick="show('home')">取消</button></div>
-      <div class="form">
-        <label>相片（最少 3 張）</label><div class="photos" id="photoSlots"></div>
-        <button class="chip" style="margin-top:8px" type="button" onclick="useDemoPhotos()">用示範三張相</button>
-        <input id="filePick" type="file" accept="image/*" hidden />
-        <label>標題</label><input class="field" id="pTitle" maxlength="40" placeholder="例如：實木餐椅兩張" />
-        <label>描述</label><textarea class="field" id="pDesc" placeholder="幾時可交、交收點…"></textarea>
-        <label>狀況</label><div class="opts" id="condOpts"></div>
-        <label>類別</label><div class="opts" id="catOpts"></div>
-        <label>交收地區</label><button class="field" type="button" style="text-align:left" id="pDistrictBtn" onclick="openSheet('post')">選擇十八區</button>
-        <label>交收方法</label><div class="opts" id="meetOpts"></div>
-        <label style="display:flex;gap:8px;align-items:center;font-weight:500"><input type="checkbox" id="pFree" checked /> 我確認完全免費，不收錢</label>
-        <p class="err" id="pErr"></p>
-        <button class="btn btn-primary" style="margin-top:12px" onclick="submitPost()">發佈</button>
-      </div>
-    </div>
-    <div id="chats" class="screen">
-      <div class="top"><b>對話</b></div><div class="list" id="chatList"></div>
-      <div class="tabbar"><button class="tab" data-tab="發現" onclick="show('home')">發現</button><button class="tab" data-tab="動態" onclick="show('activity')">動態</button><button class="sell-fab" onclick="goPost()">+</button><button class="tab" data-tab="對話" onclick="show('chats')">對話</button><button class="tab" data-tab="個人" onclick="show('me')">個人</button></div>
-    </div>
-    <div id="chat" class="screen">
-      <div class="top"><button class="back" onclick="show('chats')">←</button><div><b>對話</b><div class="sub">約交收</div></div></div>
-      <div class="thread" id="thread"></div>
-      <div class="composer"><input id="msg" placeholder="講交收時間同地點…" /><button class="send" onclick="sendMsg()">送</button></div>
-    </div>
-    <div id="me" class="screen">
-      <div class="top"><b>個人</b></div>
-      <div class="profile">
-        <div class="banner"><div class="sub">註冊免費 · 送出／認領要付費</div><div style="font-size:22px;font-weight:800;margin:4px 0" id="trialLeft">未開通發佈／認領</div></div>
-        <div class="stat"><div><b id="stGive">0</b><span>已送出</span></div><div><b id="stGet">0</b><span>已執走</span></div><div><b>離島</b><span>預設地區</span></div></div>
-        <button class="me-link" onclick="toggleAlert()">附近新帖提醒<span id="alertState">開</span></button>
-        <button class="me-link" onclick="show('pay')">發佈／認領方案<span>US$1/星期</span></button>
-        <div class="row" style="margin:8px 0"><div class="ava">R<span class="ava-count" id="meGiveBadge">0</span></div><div><b>Redbull</b><div class="sub">icon 數字 = 累計完成送出</div></div></div>
-        <div id="myListings"></div>
-      </div>
-      <div class="tabbar"><button class="tab" data-tab="發現" onclick="show('home')">發現</button><button class="tab" data-tab="動態" onclick="show('activity')">動態</button><button class="sell-fab" onclick="goPost()">+</button><button class="tab" data-tab="對話" onclick="show('chats')">對話</button><button class="tab on" data-tab="個人" onclick="show('me')">個人</button></div>
-    </div>
+    <div id="post" class="screen"><div class="top"><b>三下送出</b><button class="chip" onclick="show('home')">取消</button></div><div class="form"><label>相片（最少 3 張）</label><div class="photos" id="photoSlots"></div><button class="chip" style="margin-top:8px" type="button" onclick="useDemoPhotos()">用示範三張相</button><input id="filePick" type="file" accept="image/*" hidden /><label>標題</label><input class="field" id="pTitle" maxlength="40" placeholder="例如：實木餐椅兩張" /><label>描述</label><textarea class="field" id="pDesc" placeholder="幾時可交、交收點"></textarea><label>狀況</label><div class="opts" id="condOpts"></div><label>類別</label><div class="opts" id="catOpts"></div><label>交收地區</label><button class="field" type="button" style="text-align:left" id="pDistrictBtn" onclick="openSheet('post')">選擇十八區</button><label>交收方法</label><div class="opts" id="meetOpts"></div><label style="display:flex;gap:8px;align-items:center;font-weight:500"><input type="checkbox" id="pFree" checked /> 我確認完全免費，不收錢</label><p class="err" id="pErr"></p><button class="btn btn-primary" style="margin-top:12px" onclick="submitPost()">發佈</button></div></div>
+    <div id="chats" class="screen"><div class="top"><b>對話</b></div><div class="list" id="chatList"></div><div class="tabbar"><button class="tab" data-tab="發現" onclick="show('home')">發現</button><button class="tab" data-tab="動態" onclick="show('activity')">動態</button><button class="sell-fab" onclick="goPost()">+</button><button class="tab on" data-tab="對話" onclick="show('chats')">對話</button><button class="tab" data-tab="個人" onclick="show('me')">個人</button></div></div>
+    <div id="chat" class="screen"><div class="top"><button class="back" onclick="show('chats')">←</button><div><b>對話</b><div class="sub">約交收</div></div></div><div class="thread" id="thread"></div><div class="composer"><input id="msg" placeholder="講交收時間同地點" /><button class="send" onclick="sendMsg()">送</button></div></div>
+    <div id="me" class="screen"><div class="top"><b>個人</b></div><div class="profile"><div class="banner"><div class="sub">註冊免費 · 送出／認領要付費</div><div style="font-size:22px;font-weight:800;margin:4px 0" id="trialLeft">未開通發佈／認領</div></div><div class="stat"><div><b id="stGive">0</b><span>已送出</span></div><div><b id="stGet">0</b><span>已執走</span></div><div><b>離島</b><span>預設地區</span></div></div><button class="me-link" onclick="toggleAlert()">附近新帖提醒<span id="alertState">開</span></button><button class="me-link" onclick="show('pay')">發佈／認領方案<span>US$1/星期</span></button><div class="row" style="margin:8px 0"><div class="ava">R<span class="ava-count" id="meGiveBadge">0</span></div><div><b>Redbull</b><div class="sub">icon 數字 = 累計完成送出</div></div></div><div id="myListings"></div></div><div class="tabbar"><button class="tab" data-tab="發現" onclick="show('home')">發現</button><button class="tab" data-tab="動態" onclick="show('activity')">動態</button><button class="sell-fab" onclick="goPost()">+</button><button class="tab" data-tab="對話" onclick="show('chats')">對話</button><button class="tab on" data-tab="個人" onclick="show('me')">個人</button></div></div>
     <div class="sheet-modal" id="modal" onclick="if(event.target.id==='modal')closeSheet()"><div class="sheet-body" id="modalBody"></div></div>
     <div class="toast" id="toast"></div>
   </div>
-<style>
-.steps{display:grid;gap:8px;margin:8px 0 14px}.step{display:flex;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px}.step b{width:28px;height:28px;border-radius:8px;background:var(--green);color:#fff;display:grid;place-items:center;flex:0 0 28px}.plans{display:grid;gap:8px;margin:12px 0}.plan{text-align:left;border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px 14px;font:inherit;width:100%}.plan.on{border-color:var(--green);background:var(--mint)}.plan b{display:block}.plan span{color:var(--muted);font-size:12px}.mapbox{position:relative;height:180px;margin:8px 20px 4px;border-radius:18px;background:#fff;border:1px solid var(--line);overflow:hidden}.pin{position:absolute;border:0;background:#1d1d1f;color:#fff;border-radius:999px;font-size:10px;font-weight:650;padding:4px 7px;font-family:inherit}.loc-bar{display:flex;align-items:center;justify-content:space-between;padding:calc(10px + var(--safe-t)) 20px 0}.loc{border:0;background:none;font:inherit;font-weight:700;letter-spacing:-.03em;padding:0;text-align:left;font-size:22px}.loc small{display:block;font-weight:500;color:var(--muted);font-size:12px;letter-spacing:0}.ghost-ico{width:44px;height:44px;background:#fff;border-radius:22px;border:1px solid var(--line);display:grid;place-items:center}.sell-fab{width:56px;height:56px;margin-top:-18px;flex:0 0 56px;border:0;border-radius:20px;background:var(--green);color:#fff;display:grid;place-items:center}.hero h1{font-size:28px}
-</style>
-<script src="app.js?v=16"></script>
+<style>.steps{display:grid;gap:8px;margin:8px 0 14px}.step{display:flex;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px}.step b{width:28px;height:28px;border-radius:8px;background:var(--green);color:#fff;display:grid;place-items:center;flex:0 0 28px}.plans{display:grid;gap:8px;margin:12px 0}.plan{text-align:left;border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px 14px;font:inherit;width:100%}.plan.on{border-color:var(--green);background:var(--mint)}.plan b{display:block}.plan span{color:var(--muted);font-size:12px}.mapbox{position:relative;height:180px;margin:8px 20px 4px;border-radius:18px;background:#fff;border:1px solid var(--line);overflow:hidden}.pin{position:absolute;border:0;background:#1d1d1f;color:#fff;border-radius:999px;font-size:10px;font-weight:650;padding:4px 7px;font-family:inherit}.loc-bar{display:flex;align-items:center;justify-content:space-between;padding:calc(10px + var(--safe-t)) 20px 0}.loc{border:0;background:none;font:inherit;font-weight:700;letter-spacing:-.03em;padding:0;text-align:left;font-size:22px}.loc small{display:block;font-weight:500;color:var(--muted);font-size:12px;letter-spacing:0}.ghost-ico{width:44px;height:44px;background:#fff;border-radius:22px;border:1px solid var(--line);display:grid;place-items:center}.sell-fab{width:56px;height:56px;margin-top:-18px;flex:0 0 56px;border:0;border-radius:20px;background:var(--green);color:#fff;display:grid;place-items:center}.hero h1{font-size:28px}</style>
+<script src="app.js?v=17"></script>
 </body>
 </html>
