@@ -1,0 +1,45 @@
+:root{--green:#004d26}
+.screen{background:#f5f5f7}
+.hero h1{font-size:30px;letter-spacing:-.04em}
+.logo{width:40px;height:40px;border-radius:20px;overflow:hidden;background:#e7e7ea}
+.logo svg{width:40px;height:40px;display:block}
+.loc-bar{padding:calc(8px + var(--safe-t)) 16px 0}
+.loc{font-size:20px}
+.home-rank,.ashe{margin:8px 16px 0;border-radius:16px;padding:8px 10px;min-height:44px}
+.home-rank{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line)}
+.home-rank svg,.ava svg{width:32px;height:32px;display:block}
+.ashe{display:block;width:auto;background:#004d26;color:#fff;font-size:13px;line-height:1.4;text-align:left}
+.mapbox{height:200px;margin:8px 16px;border-radius:16px}
+.top{font-size:17px;padding:8px 16px}
+.search{min-height:40px;padding:8px 12px}
+.filters{padding:0 16px 8px}
+.feed{padding:0 16px 108px}
+.grid{gap:10px}
+.card .ph{height:132px}
+.card h3{font-size:14px}
+.gem{font-size:10px}
+.tabbar{height:64px;align-items:center;left:12px;right:12px;bottom:calc(8px + var(--safe-b))}
+.tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:10px;min-height:48px}
+.tab svg,.tab .clay{width:22px;height:22px;display:block}
+.sell-fab{width:48px;height:48px;margin-top:-20px;border-radius:16px;display:grid;place-items:center;font-size:28px;line-height:1}
+.sell-fab svg{width:22px;height:22px}
+.list{padding:4px 12px 108px}
+.row{margin:6px 0;padding:10px}
+.sheet{padding-bottom:108px}
+.form{padding-bottom:28px}
+.thread{flex:1;overflow:auto;display:flex;flex-direction:column;gap:8px;padding:12px 16px 88px}
+.bubble{max-width:78%;padding:9px 12px;border-radius:16px;font-size:14px}
+.me{align-self:flex-end;background:#004d26;color:#fff}
+.them{align-self:flex-start;background:#fff;border:1px solid var(--line)}
+.sys{align-self:center;background:#eee;color:#6e6e73;font-size:12px;border-radius:999px}
+.composer{position:absolute;left:0;right:0;bottom:0;display:flex;gap:8px;padding:10px 12px calc(10px + var(--safe-b));background:#fff;border-top:1px solid var(--line)}
+.composer input{flex:1;border:1px solid var(--line);border-radius:12px;padding:10px 12px;font:inherit}
+.send{border:0;background:#004d26;color:#fff;border-radius:12px;padding:0 14px;font:inherit}
+.deal-bar{display:flex;gap:6px;overflow-x:auto;padding:8px 12px;background:#fff;border-top:1px solid var(--line)}
+.deal-bar button{border:1px solid var(--line);background:#f5f5f7;border-radius:999px;padding:8px 10px;font:inherit;font-size:12px;white-space:nowrap}
+.rank-card{margin:0 0 10px}
+.badges span{font-size:12px}
+.dist-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.dist-tile{text-align:left;border:1px solid var(--line);background:#fff;border-radius:14px;padding:10px;font:inherit}
+.dist-reg{margin:12px 0 6px;font-weight:700}
+.profile{padding-bottom:108px}
