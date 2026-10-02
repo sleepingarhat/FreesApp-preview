@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
   <title>FreesApp</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
-  <link rel="stylesheet" href="styles.css?v=26" />
+  <link rel="stylesheet" href="styles.css?v=27" />
+  <link rel="stylesheet" href="layout.css?v=27" />
 </head>
 <body>
   <div id="app">
@@ -20,7 +21,7 @@
     <div id="home" class="screen">
       <div class="loc-bar"><button class="loc" onclick="openSheet('filter')">離島區 ▾<small>東涌 · 附近免費物品</small></button><button class="ghost-ico" onclick="locateMe(false)"></button></div>
       <div class="mapbox" id="mapbox"></div>
-      <div class="top" style="padding-top:8px"><div class="search"><span>⌕</span><input id="q" placeholder="搜尋免費物品、區、地點" oninput="feed()" /></div></div>
+      <div class="top"><div class="search"><span>⌕</span><input id="q" placeholder="搜尋免費物品、區、地點" oninput="feed()" /></div></div>
       <div class="filters" id="filterBar"></div>
       <div class="feed"><div class="grid" id="feed"></div></div>
       <div class="tabbar"><button class="tab on" data-tab="發現" onclick="show('home')">發現</button><button class="tab" data-tab="動態" onclick="show('activity')">動態</button><button class="sell-fab" onclick="goPost()">+</button><button class="tab" data-tab="對話" onclick="show('chats')">對話</button><button class="tab" data-tab="個人" onclick="show('me')">個人</button></div>
@@ -35,14 +36,13 @@
     <div class="sheet-modal" id="modal" onclick="if(event.target.id==='modal')closeSheet()"><div class="sheet-body" id="modalBody"></div></div>
     <div class="toast" id="toast"></div>
   </div>
-<style>.mapbox{position:relative;height:280px;margin:8px 16px 4px;border-radius:18px;overflow:hidden;background:#e8e8ed}.loc-bar{display:flex;align-items:center;justify-content:space-between;padding:calc(10px + var(--safe-t)) 20px 0}.loc{border:0;background:none;font:inherit;font-weight:700;font-size:22px;text-align:left}.loc small{display:block;font-size:12px;color:var(--muted);font-weight:500}.ghost-ico{width:44px;height:44px;background:#fff;border-radius:22px;border:1px solid var(--line)}.sell-fab{width:56px;height:56px;margin-top:-18px;flex:0 0 56px;border:0;border-radius:20px;background:#004d26;color:#fff}.hero h1{font-size:28px}</style>
 <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
-<script src="app.js?v=26"></script>
-<script src="map.js?v=26"></script>
-<script src="flow.js?v=26"></script>
-<script src="ranks.js?v=26"></script>
-<script src="ui.js?v=26"></script>
-<script src="ashe.js?v=26"></script>
-<script src="db.js?v=26"></script>
+<script src="app.js?v=27"></script>
+<script src="map.js?v=27"></script>
+<script src="flow.js?v=27"></script>
+<script src="ranks.js?v=27"></script>
+<script src="ui.js?v=27"></script>
+<script src="ashe.js?v=27"></script>
+<script src="db.js?v=27"></script>
 </body>
 </html>
